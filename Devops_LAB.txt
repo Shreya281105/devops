@@ -288,7 +288,7 @@ public class Grade{
 }
 
 
-docker build -t java-app
+docker build -t java-app .
 docker login (copy the user name)
 
 docker tag java-app sujan0018/java-app:v1
@@ -349,6 +349,10 @@ or
 
 docker build -t java-app .
 docker run -d -t java-app
+
+export PATH=$PATH:/usr/local/bin
+/usr/local/bin/docker --version
+/usr/local/bin/docker build -t java-app .
 
 5. Save and apply 
 
