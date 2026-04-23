@@ -95,16 +95,28 @@ Junits using Maven
 >> mvn archetype:generate
 com.bnmit
 sample-app
->> mvn clean test
+go to app.java and apptest.java _.change the code
+>>cd sample-app
+mvn clean test
 
 Open surefire-report in target for report 
 ------------------------------------------
-
+exp-13
+same -12
+go to github push pom.xml and src
+jenkins->maven-> dicard->git->main branch
+pollscm
+run only if build success
+goals->packge
+add post build action-> archive artifacts->target*/.jar->save->build
+------------------------------------------------------------------
 EXP-14
 JaCoCo
 
 Same steps as exp-12
 Replace the jacoco plugin and delete Plugin management
+in <build>
+
 
 <plugins>
   <plugin>
@@ -139,7 +151,10 @@ Open site folder in target and move to index.html and open it.
 
 EXP-15
 Basic docker commands
-
+docker --version
+docker ps
+docker ps -a
+docker images
 docker run hello-world
 docker pull nginx
 docker run -d -p 8083:80 nginx  (Verify by testing the localhost:8083)
@@ -147,6 +162,7 @@ docker --version
 docker ps -a
 docker ps 
 docker stop <container id>
+docker rm<container id>
 
 -------------------------------------------
 
@@ -163,6 +179,7 @@ COPY . .
 CMD ["python","sample.py"]
 
 docker build -t my-app .
+docker images
 docker run my-app
 
 --Add the port for app.py
@@ -176,6 +193,7 @@ EXPOSE 5020
 CMD ["python","app.py"]
 
 docker build -t my-app .
+docker images
 docker run -p 5020:5020 my-app
 
 (code for app.py)
@@ -381,10 +399,18 @@ EXP-20
 Clone the repo 
 https://github.com/SarveshG2005/exp20.git
 
-Go to pipeline in Jenkins
-Add scm 
-click git and enter the your repo link and cred.
-click save and build 
+go to jenkins -> create new item ->maven
+dicard->git
+branch->main
+poll scm
+goals->package
+run only if build sucedds
+post build ->archive the artifacts -> target/.*war
+
+save 
+build now
+download .war file
+go to tomcat localhost ->manager-> uppload->deploy open
 
 ------------------------------------------
 
