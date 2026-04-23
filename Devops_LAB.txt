@@ -209,7 +209,7 @@ docker run -d nginx
 docker run -d -p 8084:80 nginx
 
 docker volume create myvolume
-docker volume
+docker volume ls
 
 docker run -it -v myvolume:/data ubuntu bash
 
